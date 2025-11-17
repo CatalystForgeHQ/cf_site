@@ -53,42 +53,25 @@
 
     .logo-mark {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
     }
 
     .logo-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 20%, #f97316, transparent 55%),
-        radial-gradient(circle at 70% 80%, #22c55e, transparent 55%),
-        radial-gradient(circle at 80% 0, #4f46e5, transparent 55%),
-        #020617;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), var(--shadow-subtle);
+      width: 280px;
+      height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden;
     }
 
-    .logo-icon::after {
-      content: "";
-      position: absolute;
-      inset: 45%;
-      border-radius: 12px;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      transform: rotate(30deg);
-    }
-
-    .logo-text-main {
-      font-weight: 650;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .logo-text-sub {
@@ -96,6 +79,7 @@
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.16em;
+      margin-left: 4px;
     }
 
     .chip {
@@ -383,11 +367,10 @@
   <div class="page">
     <header>
       <div class="logo-mark">
-        <div class="logo-icon"></div>
-        <div>
-          <div class="logo-text-main">Catalyst Forge</div>
-          <div class="logo-text-sub">Technical Acquisitions Studio</div>
+        <div class="logo-icon">
+          <img src="logo_text_transparent.png" alt="Catalyst Forge Logo" />
         </div>
+        <div class="logo-text-sub">Technical Acquisitions Studio</div>
       </div>
 
       <div class="chip">
