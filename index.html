@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalyst Forge – Technical Acquisitions & Growth</title>
+  <meta name="description" content="Catalyst Forge acquires and scales digital businesses with engineering precision, modern product design, and smart automation." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #080b16;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.14);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --card: rgba(15, 23, 42, 0.9);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 50%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 20%, #f97316, transparent 55%),
+        radial-gradient(circle at 70% 80%, #22c55e, transparent 55%),
+        radial-gradient(circle at 80% 0, #4f46e5, transparent 55%),
+        #020617;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), var(--shadow-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      inset: 45%;
+      border-radius: 12px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      transform: rotate(30deg);
+    }
+
+    .logo-text-main {
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(18px);
+    }
+
+    .chip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.16);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .hero {
+      padding: 26px 24px 24px;
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.85),
+          rgba(15, 23, 42, 0.95)
+        ),
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.3), transparent);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.22), transparent 55%),
+        radial-gradient(circle at 90% 20%, rgba(34, 197, 94, 0.18), transparent 55%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill-row {
+      display: inline-flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 2.7vw + 1.1rem, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .accent-gradient {
+      background: linear-gradient(120deg, #a855f7, #4f46e5, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lede {
+      font-size: 0.94rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 18px;
+    }
+
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat strong {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 550;
+      color: white;
+      background: radial-gradient(circle at 0 0, #22c55e, transparent 65%),
+        linear-gradient(135deg, #4f46e5, #7c3aed);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      text-decoration: none;
+    }
+
+    .btn-primary span.icon {
+      font-size: 1.1rem;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      text-decoration: none;
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .hero-footnote {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .hero-footnote strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 550;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .card-body {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .pill-row-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill-mini {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .roadmap-list {
+      list-style: none;
+      margin: 8px 0 0;
+      padding-left: 0;
+    }
+
+    .roadmap-list li {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .roadmap-dot {
+      width: 18px;
+      display: inline-flex;
+      justify-content: center;
+      margin-top: 2px;
+      font-size: 0.7rem;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-mark">
+        <div class="logo-icon"></div>
+        <div>
+          <div class="logo-text-main">Catalyst Forge</div>
+          <div class="logo-text-sub">Technical Acquisitions Studio</div>
+        </div>
+      </div>
+
+      <div class="chip">
+        <span class="chip-dot"></span>
+        <span>Actively exploring new acquisitions</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- Left: Hero -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="pill-row">
+            <span class="pill">Engineering-led operations</span>
+            <span class="pill">Digital acquisitions</span>
+          </div>
+
+          <h1>
+            We acquire and
+            <span class="accent-gradient">scale digital businesses</span>
+            with engineering precision.
+          </h1>
+
+          <p class="hero-lede">
+            Catalyst Forge is a solo-operated studio focused on acquiring niche, cash-flowing
+            online businesses and compounding their value through better product,
+            modern UX, and smart automation — not just more ads.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <strong>Technical focus</strong>
+              <span>Full-stack engineering & product background</span>
+            </div>
+            <div class="stat">
+              <strong>Operator’s lens</strong>
+              <span>Hands-on systems, analytics, and experimentation</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="mailto:founder@catalystforge.dev?subject=Catalyst%20Forge%20–%20Introduction">
+              <span class="icon">✉️</span>
+              <span>Start a conversation</span>
+            </a>
+
+            <a class="btn-ghost" href="mailto:founder@catalystforge.dev?subject=Deal%20or%20Partnership%20Inquiry">
+              Share a deal · advisor · operator role →
+            </a>
+          </div>
+
+          <p class="hero-footnote">
+            Currently focused on <strong>profitable, defensible niche products</strong> in
+            SaaS, digital health, and information services in the
+            <strong>$50k–$500k EV</strong> range.
+          </p>
+        </div>
+      </section>
+
+      <!-- Right: Focus & Roadmap -->
+      <aside class="side-panel">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">What we do</div>
+            <div class="card-tag">Acquisition & value creation</div>
+          </div>
+          <div class="card-body">
+            We look for under-optimized but proven businesses where
+            clean engineering, thoughtful UX, and disciplined marketing
+            can meaningfully move the needle.
+            <div class="pill-row-mini">
+              <span class="pill-mini">UX & funnel rebuilds</span>
+              <span class="pill-mini">Lifecycle email</span>
+              <span class="pill-mini">Pricing & packaging</span>
+              <span class="pill-mini">Analytics & tooling</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Operator profile</div>
+            <div class="card-tag">Engineering + product</div>
+          </div>
+          <div class="card-body">
+            <p>
+              Software engineer by training with experience across
+              microservices, infrastructure, and data pipelines — now
+              applying that toolkit to small, cash-flowing businesses.
+            </p>
+            <p style="margin-top: 6px;">
+              Comfortable owning everything from codebase and stack
+              decisions to ads experiments and KPI dashboards.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Near-term roadmap</div>
+            <div class="card-tag">First 12–24 months</div>
+          </div>
+          <div class="card-body">
+            <ul class="roadmap-list">
+              <li>
+                <span class="roadmap-dot">◦</span>
+                <span>Close first acquisition and rebuild core UX & onboarding.</span>
+              </li>
+              <li>
+                <span class="roadmap-dot">◦</span>
+                <span>Implement lifecycle email, clean analytics, and basic experimentation framework.</span>
+              </li>
+              <li>
+                <span class="roadmap-dot">◦</span>
+                <span>Systematize ops with VAs and lightweight playbooks.</span>
+              </li>
+              <li>
+                <span class="roadmap-dot">◦</span>
+                <span>Begin evaluating a second complementary acquisition.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Catalyst Forge LLC. All rights reserved.</span>
+      <span>
+        Contact:
+        <a href="mailto:founder@catalystforge.dev">founder@catalystforge.dev</a>
+      </span>
+    </footer>
+  </div>
+
+  <script>
+    // Set the current year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
